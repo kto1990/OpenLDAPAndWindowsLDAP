@@ -27,7 +27,8 @@ void main()
     {
         std::cout << connector->name() << std::endl;
         if (connector->connect()) {
-            std::cout << "Connect to server successfully" << std::endl << std::endl;
+            std::cout << "Connect to server successfully" << std::endl;
         }
+        std::cout << std::endl;
     }
 }
