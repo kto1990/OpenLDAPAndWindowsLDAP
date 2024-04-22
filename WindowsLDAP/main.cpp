@@ -6,9 +6,9 @@ void main()
     WCHAR username[256]{ 0 };
     WCHAR password[256]{ 0 };
 
-    GetPrivateProfileString(L"server", L"host", L"127.0.0.1", host, sizeof(host) / sizeof(WCHAR), L".\\settings.ini");
-    GetPrivateProfileString(L"server", L"username", L"127.0.0.1", username, sizeof(username) / sizeof(WCHAR), L".\\settings.ini");
-    GetPrivateProfileString(L"server", L"password", L"127.0.0.1", password, sizeof(password) / sizeof(WCHAR), L".\\settings.ini");
+    GetPrivateProfileString(L"server", L"host", L"", host, sizeof(host) / sizeof(WCHAR), L".\\settings.ini");
+    GetPrivateProfileString(L"server", L"username", L"", username, sizeof(username) / sizeof(WCHAR), L".\\settings.ini");
+    GetPrivateProfileString(L"server", L"password", L"", password, sizeof(password) / sizeof(WCHAR), L".\\settings.ini");
 
     WindowsLDAP* windowsLDAP_None = new WindowsLDAP(host, username, password, WindowsLDAP::ENCRYPTION::NONE);
     WindowsLDAP* windowsLDAP_SSL = new WindowsLDAP(host, username, password, WindowsLDAP::ENCRYPTION::SSL);

@@ -6,9 +6,9 @@ void main()
     CHAR username[256]{ 0 };
     CHAR password[256]{ 0 };
 
-    GetPrivateProfileString("server", "host", "127.0.0.1", host, sizeof(host) / sizeof(WCHAR), ".\\settings.ini");
-    GetPrivateProfileString("server", "username", "127.0.0.1", username, sizeof(username) / sizeof(CHAR), ".\\settings.ini");
-    GetPrivateProfileString("server", "password", "127.0.0.1", password, sizeof(password) / sizeof(CHAR), ".\\settings.ini");
+    GetPrivateProfileString("server", "host", "", host, sizeof(host) / sizeof(WCHAR), ".\\settings.ini");
+    GetPrivateProfileString("server", "username", "", username, sizeof(username) / sizeof(CHAR), ".\\settings.ini");
+    GetPrivateProfileString("server", "password", "", password, sizeof(password) / sizeof(CHAR), ".\\settings.ini");
 
     OpenLDAP* openLDAP_None = new OpenLDAP(host, username, password, OpenLDAP::ENCRYPTION::NONE);
     OpenLDAP* openLDAP_SSL = new OpenLDAP(host, username, password, OpenLDAP::ENCRYPTION::SSL);

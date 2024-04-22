@@ -21,7 +21,7 @@ bool WindowsLDAP::connect()
     }
 
     if (pLdapConnection == NULL) {
-        printf("ldap_init failed with 0x%x.\n", LdapGetLastError());
+        printf("Init failed. Error code 0x%x.\n", LdapGetLastError());
         ldap_unbind(pLdapConnection);
         return false;
     }
@@ -31,7 +31,7 @@ bool WindowsLDAP::connect()
 
     lRtn = ldap_set_option(pLdapConnection, LDAP_OPT_PROTOCOL_VERSION, (void*)&version);
     if (lRtn != LDAP_SUCCESS) {
-        printf("SetOption Error:%0lX\n", lRtn);
+        printf("Set option failed. Error code %0lX\n", lRtn);
         ldap_unbind(pLdapConnection);
         return false;
     }
@@ -52,14 +52,14 @@ bool WindowsLDAP::connect()
 
     lRtn = ldap_connect(pLdapConnection, NULL);
     if (lRtn != LDAP_SUCCESS) {
-        printf("ldap_connect failed with 0x%lx.\n", lRtn);
+        printf("Failed to connect to server. Error code 0x%lx.\n", lRtn);
         ldap_unbind(pLdapConnection);
         return false;
     }
 
     lRtn = ldap_simple_bind_s(pLdapConnection, w_user_name, w_password);
     if (lRtn != LDAP_SUCCESS) {
-        printf("Failed to connect to server. ErrorCode: 0x%lx.\n", lRtn);
+        printf("Failed to authenticate. ErrorCode 0x%lx.\n", lRtn);
         ldap_unbind(pLdapConnection);
         return false;
     }
