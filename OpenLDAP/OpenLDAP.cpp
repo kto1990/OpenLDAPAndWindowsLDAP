@@ -9,6 +9,8 @@
 #include "OpenLDAP.h"
 
 namespace {
+	std::string caCertFile = "RootCACert.cer";
+
 	unsigned int getRootCAcertificatesforLdap(std::string path)
 	{
 		FILE* caCertsFile = nullptr;
@@ -56,6 +58,7 @@ OpenLDAP::OpenLDAP(const std::string& _host_name, const std::string& _user_name,
 
 bool OpenLDAP::connect()
 {
+	bool rc = true;
 	try {
 		if (this->encryption_type == ENCRYPTION::NONE) {
 			this->host_name = "ldap://" + this->host_name + ":389";
@@ -66,7 +69,6 @@ bool OpenLDAP::connect()
 		LDAPConnection* connection = new LDAPConnection(this->host_name, 0);
 
 		if (this->encryption_type == ENCRYPTION::SSL) {
-			std::string caCertFile = "RootCACert.cer";
 			getRootCAcertificatesforLdap(caCertFile);
 
 			TlsOptions tlsOptW = connection->getTlsOptions();
@@ -79,15 +81,19 @@ bool OpenLDAP::connect()
 		cons.setServerControls(&ctrls);
 
 		connection->bind(this->user_name, this->password, &cons);
-
-		return true;
 	}
 	catch (LDAPException& e) {
 		int errorCode = e.getResultCode();
 		std::string serverErrorMsg = e.getServerMsg();
 		std::cout << "Failed to connect to server. ErrorCode: " << errorCode << ". ErrorString: " << serverErrorMsg << std::endl;
 
-		return false;
+		rc = false;
 	}
+
+	if (this->encryption_type == ENCRYPTION::SSL) {
+		DeleteFileA(caCertFile.c_str());
+	}
+
+	return rc;
 }
 
