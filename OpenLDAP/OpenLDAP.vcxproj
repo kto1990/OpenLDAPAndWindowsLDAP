@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{f8ca9d08-d655-4fe4-b3c3-a3899184e08b}</ProjectGuid>
+    <RootNamespace>OpenLDAP</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <SourcePath>$(SourcePath)</SourcePath>
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>libldap-2.4.46/include;libsasl2/include;openssl/include;ldapcpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libldap-2.4.46/lib/libldap.lib;libldap-2.4.46/lib/liblber.lib;libsasl2/lib/sasl2.lib;openssl/lib/libcrypto.lib;openssl/lib/libssl.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ldapcpp\LDAPAddRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPAsynConnection.cpp" />
+    <ClCompile Include="ldapcpp\LDAPAttribute.cpp" />
+    <ClCompile Include="ldapcpp\LDAPAttributeList.cpp" />
+    <ClCompile Include="ldapcpp\LDAPAttrType.cpp" />
+    <ClCompile Include="ldapcpp\LDAPBindRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPCompareRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPConnection.cpp" />
+    <ClCompile Include="ldapcpp\LDAPConstraints.cpp" />
+    <ClCompile Include="ldapcpp\LDAPControl.cpp" />
+    <ClCompile Include="ldapcpp\LDAPControlSet.cpp" />
+    <ClCompile Include="ldapcpp\LDAPDeleteRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPEntry.cpp" />
+    <ClCompile Include="ldapcpp\LDAPEntryList.cpp" />
+    <ClCompile Include="ldapcpp\LDAPException.cpp" />
+    <ClCompile Include="ldapcpp\LDAPExtRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPExtResult.cpp" />
+    <ClCompile Include="ldapcpp\LDAPMessage.cpp" />
+    <ClCompile Include="ldapcpp\LDAPMessageQueue.cpp" />
+    <ClCompile Include="ldapcpp\LDAPModDNRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPModification.cpp" />
+    <ClCompile Include="ldapcpp\LDAPModifyRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPModList.cpp" />
+    <ClCompile Include="ldapcpp\LDAPObjClass.cpp" />
+    <ClCompile Include="ldapcpp\LDAPRebind.cpp" />
+    <ClCompile Include="ldapcpp\LDAPRebindAuth.cpp" />
+    <ClCompile Include="ldapcpp\LDAPReferenceList.cpp" />
+    <ClCompile Include="ldapcpp\LDAPRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPResult.cpp" />
+    <ClCompile Include="ldapcpp\LDAPSaslBindResult.cpp" />
+    <ClCompile Include="ldapcpp\LDAPSchema.cpp" />
+    <ClCompile Include="ldapcpp\LDAPSearchReference.cpp" />
+    <ClCompile Include="ldapcpp\LDAPSearchRequest.cpp" />
+    <ClCompile Include="ldapcpp\LDAPSearchResult.cpp" />
+    <ClCompile Include="ldapcpp\LDAPSearchResults.cpp" />
+    <ClCompile Include="ldapcpp\LDAPUrl.cpp" />
+    <ClCompile Include="ldapcpp\LDAPUrlList.cpp" />
+    <ClCompile Include="ldapcpp\LdifReader.cpp" />
+    <ClCompile Include="ldapcpp\LdifWriter.cpp" />
+    <ClCompile Include="ldapcpp\SaslInteraction.cpp" />
+    <ClCompile Include="ldapcpp\SaslInteractionHandler.cpp" />
+    <ClCompile Include="ldapcpp\StringList.cpp" />
+    <ClCompile Include="ldapcpp\TlsOptions.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenLDAP.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ldapcpp\ac\time.h" />
+    <ClInclude Include="ldapcpp\config.h" />
+    <ClInclude Include="ldapcpp\config_centos6.h" />
+    <ClInclude Include="ldapcpp\config_ori.h" />
+    <ClInclude Include="ldapcpp\debug.h" />
+    <ClInclude Include="ldapcpp\LDAPAddRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPAsynConnection.h" />
+    <ClInclude Include="ldapcpp\LDAPAttribute.h" />
+    <ClInclude Include="ldapcpp\LDAPAttributeList.h" />
+    <ClInclude Include="ldapcpp\LDAPAttrType.h" />
+    <ClInclude Include="ldapcpp\LDAPBindRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPCompareRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPConnection.h" />
+    <ClInclude Include="ldapcpp\LDAPConstraints.h" />
+    <ClInclude Include="ldapcpp\LDAPControl.h" />
+    <ClInclude Include="ldapcpp\LDAPControlSet.h" />
+    <ClInclude Include="ldapcpp\LDAPDeleteRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPEntry.h" />
+    <ClInclude Include="ldapcpp\LDAPEntryList.h" />
+    <ClInclude Include="ldapcpp\LDAPException.h" />
+    <ClInclude Include="ldapcpp\LDAPExtRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPExtResult.h" />
+    <ClInclude Include="ldapcpp\LDAPMessage.h" />
+    <ClInclude Include="ldapcpp\LDAPMessageQueue.h" />
+    <ClInclude Include="ldapcpp\LDAPModDNRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPModification.h" />
+    <ClInclude Include="ldapcpp\LDAPModifyRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPModList.h" />
+    <ClInclude Include="ldapcpp\LDAPObjClass.h" />
+    <ClInclude Include="ldapcpp\LDAPRebind.h" />
+    <ClInclude Include="ldapcpp\LDAPRebindAuth.h" />
+    <ClInclude Include="ldapcpp\LDAPReferenceList.h" />
+    <ClInclude Include="ldapcpp\LDAPRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPResult.h" />
+    <ClInclude Include="ldapcpp\LDAPSaslBindResult.h" />
+    <ClInclude Include="ldapcpp\LDAPSchema.h" />
+    <ClInclude Include="ldapcpp\LDAPSearchReference.h" />
+    <ClInclude Include="ldapcpp\LDAPSearchRequest.h" />
+    <ClInclude Include="ldapcpp\LDAPSearchResult.h" />
+    <ClInclude Include="ldapcpp\LDAPSearchResults.h" />
+    <ClInclude Include="ldapcpp\LDAPUrl.h" />
+    <ClInclude Include="ldapcpp\LDAPUrlList.h" />
+    <ClInclude Include="ldapcpp\LdifReader.h" />
+    <ClInclude Include="ldapcpp\LdifWriter.h" />
+    <ClInclude Include="ldapcpp\SaslInteraction.h" />
+    <ClInclude Include="ldapcpp\SaslInteractionHandler.h" />
+    <ClInclude Include="ldapcpp\StringList.h" />
+    <ClInclude Include="ldapcpp\TlsOptions.h" />
+    <ClInclude Include="OpenLDAP.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

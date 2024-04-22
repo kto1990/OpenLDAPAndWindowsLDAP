@@ -1,0 +1,11 @@
+.vs
+OpenLDAP.tlog
+*.obj
+*.iobj
+*.suo
+*.exp
+*.log
+*.pdb
+*.ipdb
+*.txt
+*.recipe
