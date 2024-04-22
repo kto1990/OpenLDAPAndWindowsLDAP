@@ -13,6 +13,8 @@ void main()
     OpenLDAP* openLDAP_None = new OpenLDAP(host, username, password, OpenLDAP::ENCRYPTION::NONE);
     OpenLDAP* openLDAP_SSL = new OpenLDAP(host, username, password, OpenLDAP::ENCRYPTION::SSL);
 
+    std::cout << "Host: '" << host << "'" << std::endl << std::endl;
+
     std::cout << "Test connection without encryption" << std::endl;
     if (openLDAP_None->connect()) {
         std::cout << "Connected to server successfully" << std::endl;

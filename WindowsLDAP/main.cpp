@@ -13,6 +13,8 @@ void main()
     WindowsLDAP* windowsLDAP_None = new WindowsLDAP(host, username, password, WindowsLDAP::ENCRYPTION::NONE);
     WindowsLDAP* windowsLDAP_SSL = new WindowsLDAP(host, username, password, WindowsLDAP::ENCRYPTION::SSL);
 
+    std::wcout << L"Host: '" << host << L"'" << std::endl << std::endl;
+
     std::cout << "Test connection without encryption" << std::endl;
     if (windowsLDAP_None->connect()) {
         std::cout << "Connected to server successfully" << std::endl;
