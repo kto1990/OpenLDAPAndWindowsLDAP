@@ -17,6 +17,65 @@ const int LDAPConnection::SEARCH_SUB = LDAPAsynConnection::SEARCH_SUB;
 
 using namespace std;
 
+//https://dagshub.com/suizhihao/Impala/src/473b533672f712efc6ff103c2a0fd0f0b0c7032f/thirdparty/openldap-2.4.25/tests/progs/slapd-common.c
+void tester_ldap_error(LDAP* ld, int &err_code, std::string &err_msg)
+{
+    char* text = NULL;
+    LDAPControl** ctrls = NULL;
+
+    ldap_get_option(ld, LDAP_OPT_RESULT_CODE, (void*)&err_code);
+    if (err_code != LDAP_SUCCESS) {
+        ldap_get_option(ld, LDAP_OPT_DIAGNOSTIC_MESSAGE, (void*)&text);
+    }
+
+    err_msg = std::string(ldap_err2string(err_code));
+
+    if (text) {
+        err_msg += ". " + std::string(text);
+        ldap_memfree(text);
+        text = NULL;
+    }
+
+    ldap_get_option(ld, LDAP_OPT_MATCHED_DN, (void*)&text);
+    if (text != NULL) {
+        if (text[0] != '\0') {
+            err_msg += ". " + std::string(text);
+        }
+        ldap_memfree(text);
+        text = NULL;
+    }
+
+    ldap_get_option(ld, LDAP_OPT_SERVER_CONTROLS, (void*)&ctrls);
+    if (ctrls != NULL) {
+        int	i;
+
+        err_msg += "\n\tControls:";
+        for (i = 0; ctrls[i] != NULL; i++) {
+            err_msg += "\n\t\t" + std::string(ctrls[i]->ldctl_oid);
+        }
+        ldap_controls_free(ctrls);
+        ctrls = NULL;
+    }
+
+    if (err_code == LDAP_REFERRAL) {
+        char** refs = NULL;
+
+        ldap_get_option(ld, LDAP_OPT_REFERRAL_URLS, (void*)&refs);
+
+        if (refs) {
+            int	i;
+
+            err_msg += "\n\tReferral:";
+            for (i = 0; refs[i] != NULL; i++) {
+                fprintf(stderr, "\t\t%s\n", refs[i]);
+                err_msg += "\n\t\t" + std::string(refs[i]);
+            }
+
+            ber_memvfree((void**)refs);
+        }
+    }
+}
+
 LDAPConnection::LDAPConnection(const string& hostname, int port, 
         LDAPConstraints* cons) :
         LDAPAsynConnection(hostname, port, cons){
@@ -40,7 +99,12 @@ void LDAPConnection::bind(const string& dn, const string& passwd,
     }catch(LDAPException &){
         delete msg;
         delete res;
-        throw;
+
+        int err = -1;
+        std::string errMsg;
+        tester_ldap_error(this->getSessionHandle(), err, errMsg);
+
+        throw LDAPException(err, errMsg);
     }
     int resCode=res->getResultCode();
     if(resCode != LDAPResult::SUCCESS) {

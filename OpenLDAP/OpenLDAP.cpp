@@ -69,8 +69,9 @@ bool OpenLDAP::connect()
 		LDAPConnection* connection = new LDAPConnection(this->host_name, 0);
 
 		if (this->encryption_type == ENCRYPTION::SSL) {
-			getRootCAcertificatesforLdap(caCertFile);
-
+			if (0 == getRootCAcertificatesforLdap(caCertFile)) {
+				throw LDAPException(-1, "No root CA certificates found. LDAP SSL/TSL connections will not work");
+			}
 			TlsOptions tlsOptW = connection->getTlsOptions();
 			tlsOptW.setOption(TlsOptions::CACERTFILE, caCertFile);
 		}

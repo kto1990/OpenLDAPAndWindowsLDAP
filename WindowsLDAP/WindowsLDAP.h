@@ -5,7 +5,7 @@
 class WindowsLDAP
 {
 public:
-	static enum class ENCRYPTION {
+	enum class ENCRYPTION {
 		NONE = 0,
 		SSL
 	};
